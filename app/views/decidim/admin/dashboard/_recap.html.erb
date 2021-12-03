@@ -12,8 +12,8 @@
       <div>
         <h3 class="letter_spaced"> <b>Recommendations</b> </h3>
         <ul>
-          <% if Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations %>
-            <li class="recommendation no-bullet"> <a href="#"><%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.points %> pts</span></li>
+          <% if Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendations %>
+            <li class="recommendation no-bullet"> <a href="#"><%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendations.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendations.points %> pts</span></li>
           <% end %>
           <% Decidim::ParticipativeAssistant::ParticipativeAction.recommendations.each do |recommendation| %>
             <li class="recommendation bulleted"> <a href="#"><%= recommendation.recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> pts</span></li>
