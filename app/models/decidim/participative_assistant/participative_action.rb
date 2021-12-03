@@ -6,7 +6,13 @@ module Decidim
 
       validates :organization, presence: true
 
-      scope :recommendations, ->{ParticipativeAction.where(completed:false).order(:points).limit(3)}
+      scope :recommendations, -> { ParticipativeAction.uncompleted.order(:points).limit(3) }
+      scope :uncompleted, -> { where(completed: false) }
+      scope :completed, -> { where(completed: true) }
+      scope :edition, -> { where(category: "Edition") }
+      scope :edition, -> { where(category: "Edition") }
+      scope :edition, -> { where(category: "Edition") }
+      scope :edition, -> { where(category: "Edition") }
 
       def self.last_done_recommendations
         participative_action = organization.assistant['last']
@@ -21,7 +27,7 @@ module Decidim
           if i == 1
             paliers.append(ParticipativeAction.where(points: i).size)
           else
-            paliers.append(ParticipativeAction.where(points: i).size*i + paliers[i - 2])
+            paliers.append(ParticipativeAction.where(points: i).size * i + paliers[i - 2])
           end
         end
         return paliers
